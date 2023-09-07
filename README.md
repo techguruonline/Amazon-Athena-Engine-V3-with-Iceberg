@@ -64,7 +64,7 @@ Now let's UPDATE a record
 ### Time Travel <br>
 Iceberg table provides powerful features like Time travel which allows you to go back in time and see the data at that point in itme.
 Let's try out the time travel to check what was the Phone number of Customer with Cust_id = 2, 5 mins back <br>
-[!Note]
+> **Note**
 The FOR SYSTEM_TIME AS OF and FOR SYSTEM_VERSION AS OF clauses in Athena engine version 2 have been replaced by the FOR TIMESTAMP AS OF and FOR VERSION AS OF clauses in Athena engine version 3.
 
     SELECT * FROM customer FOR TIMESTAMP AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
