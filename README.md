@@ -34,6 +34,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
 
 ### Insert / Update / Delete Operations
 
+**Insert**
 *Insert data into the table*
     
     INSERT INTO CUSTOMER VALUES (1, 'Prasad', 'Nadig', 1234567890, current_date);
@@ -49,6 +50,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     SELECT * FROM customer ORDER BY cust_id;
 
 Even though the data resides on S3, you can treat this like a traditional RDBMS i.e, you can run ACID transactions like UPDATE, INSERT, DELETE etc
+**Update**
 Now let's UPDATE a record
     
     UPDATE customer
@@ -59,10 +61,13 @@ Now let's UPDATE a record
     
     SELECT * FROM customer WHERE CUST_ID = 2;
 
-Iceberg table provides powerful features like Timetravel which allows you to go back in time and see the data at that point in itme.
+**Time Travel**
+Iceberg table provides powerful features like Time travel which allows you to go back in time and see the data at that point in itme.
 Let's try out the time travel to check what was the Phone number of Customer with Cust_id = 2, 5 mins back <br>
-    
-    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
+[!Note]
+The FOR SYSTEM_TIME AS OF and FOR SYSTEM_VERSION AS OF clauses in Athena engine version 2 have been replaced by the FOR TIMESTAMP AS OF and FOR VERSION AS OF clauses in Athena engine version 3.
+
+    SELECT * FROM customer FOR TIMESTAMP AS OF (CURRENT_TIMESTAMP - INTERVAL '5' MINUTE) WHERE CUST_ID = 2;
 
 
 You can also check the status of the table at a specific point in time
@@ -70,8 +75,9 @@ Get the current timestanp
 
     SELECT current_timestamp;  
 
-    SELECT * FROM customer FOR SYSTEM_TIME AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
+    SELECT * FROM customer FOR TIMESTAMP AS OF TIMESTAMP '2022-10-24 00:00:00' WHERE CUST_ID = 2;
 
+**Dalete**
 Now let's DELETE couple of records
 
     DELETE FROM customer WHERE CUST_ID IN (6,7);
@@ -82,7 +88,7 @@ Select the data to validate if the records were deleted
 
 Again let's go back in time to check how the table looks like 2 mins back
 
-    SELECT * FROM customer FOR SYSTEM_TIME AS OF (CURRENT_TIMESTAMP - INTERVAL '2' MINUTE) ORDER BY cust_id;
+    SELECT * FROM customer FOR TIMESTAMP AS OF (CURRENT_TIMESTAMP - INTERVAL '2' MINUTE) ORDER BY cust_id;
 
 ### Schema Evolution
 
