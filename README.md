@@ -50,7 +50,7 @@ Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapsho
     SELECT * FROM customer ORDER BY cust_id;
 
 Even though the data resides on S3, you can treat this like a traditional RDBMS i.e, you can run ACID transactions like UPDATE, INSERT, DELETE etc
-### + Update <br>
++ ###  Update <br>
 Now let's UPDATE a record
     
     UPDATE customer
