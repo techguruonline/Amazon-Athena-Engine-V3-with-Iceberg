@@ -1,4 +1,4 @@
-# Amazon-Athena-with-Apache-Iceberg
+# Amazon-Athena-Engine-V3-with-Iceberg
 Insert / Update / Delete on S3 With Amazon Athena and Apache Iceberg
 
 Athena ACID transactions powered by Apache Iceberg. Open Speccification, Snapshot-based table format for huge analytic datasets
