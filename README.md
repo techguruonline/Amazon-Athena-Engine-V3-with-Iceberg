@@ -162,16 +162,14 @@ Athena supports the following table DDL operations for Iceberg tables.
 
 # Consideration and Limitations
 
-Tables with Amazon Glue catalog only – Only Iceberg tables created against the Amazon Glue catalog based on specifications defined by the open source glue catalog implementation are supported from Athena.
+**Tables with Amazon Glue catalog only** – Only Iceberg tables created against the Amazon Glue catalog based on specifications defined by the open source glue catalog implementation are supported from Athena.
 
-Table locking support by Amazon Glue only – Unlike the open source Glue catalog implementation, which supports plug-in custom locking, Athena supports Amazon Glue optimistic locking only. Using Athena to modify an Iceberg table with any other lock implementation will cause potential data loss and break transactions.
+**Table locking support by Amazon Glue only** – Unlike the open source Glue catalog implementation, which supports plug-in custom locking, Athena supports Amazon Glue optimistic locking only. Using Athena to modify an Iceberg table with any other lock implementation will cause potential data loss and break transactions.
 
-Supported file formats – Iceberg file format support in Athena depends on the Athena engine version, as shown in the following table.
+**Supported file formats** – Iceberg file format support in Athena depends on the Athena engine version, as shown in the following table.
 ![Alt text](image.png)
 
-Iceberg v2 tables – Athena only creates and operates on Iceberg v2 tables. For the difference between v1 and v2 tables, see [Format version changes](https://iceberg.apache.org/spec/#appendix-e-format-version-changes) in the Apache Iceberg documentation.
-
-Lake Formation – Integration with Amazon Lake Formation is not supported.
+**Iceberg v2 tables** – Athena only creates and operates on Iceberg v2 tables. For the difference between v1 and v2 tables, see [Format version changes](https://iceberg.apache.org/spec/#appendix-e-format-version-changes) in the Apache Iceberg documentation.
 
 Unsupported operations – The following Athena operations are not supported for Iceberg tables.
 
